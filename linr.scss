@@ -1,0 +1,141 @@
+//
+//	Global SCSS File
+//
+//	Each page (usually) has it's own set
+//	of nested selectors
+//
+
+/* Eric Meyer's Reset CSS v2.0 - http://cssreset.com */
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{border:0;font-size:100%;font:inherit;vertical-align:baseline;margin:0;padding:0}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:none}table{border-collapse:collapse;border-spacing:0}
+
+// --- Mixins --- //
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+      -ms-border-radius: $radius;
+          border-radius: $radius;
+}
+
+@mixin linear-gradient($dir, $colors...) {
+	background: -webkit-linear-gradient($dir, $colors); /* Chrome 10+, Saf5.1+ */
+	background:    -moz-linear-gradient($dir, $colors); /* FF3.6+ */
+	background:     -ms-linear-gradient($dir, $colors); /* IE10 */
+	background:      -o-linear-gradient($dir, $colors); /* Opera 11.10+ */
+	background:         linear-gradient($dir, $colors); /* W3C */
+}
+@mixin placeholder {
+	&::-webkit-input-placeholder {@content}
+	&:-moz-placeholder           {@content}
+	&::-moz-placeholder          {@content}
+	&:-ms-input-placeholder      {@content}  
+}
+@mixin transform($transform) {
+	-webkit-transform: $transform;
+	   -moz-transform: $transform;
+	    -ms-transform: $transform;
+	     -o-transform: $transform;
+		    transform: $transform;
+}
+
+// --- Fonts --- //
+@import url(http://fonts.googleapis.com/css?family=Bree+Serif);
+
+// --- Color Palette --- //
+$main-beige1: #efaa85;
+$main-beige2: #eed8b5;
+$main-sand: #bfab92;
+$main-purple: #796e6f;
+$main-dark: #495659;
+
+// --- General Styles --- //
+html, body{
+	width: 100%;
+	height: 100%;
+	overflow: none;
+	font-family: 'Bree Serif', helvetica, serif;
+}
+
+h1 {
+	font-size: 200%;
+	color: #000;
+	padding: 1em;
+}
+
+h2 {
+	color: $main-dark;
+}
+
+// --- Main Page (text entry) //
+.main-page {
+	@include linear-gradient(0deg, $main-beige2 0%, $main-beige1 50%);
+	.linr-feed {
+		width: 70%;
+		height: 100%;
+		position: absolute;
+		top: 0;
+		left: 50%;
+		@include transform(translate(-50%, 0%));
+		background-color: rgba(255,255,255,0.15);
+		border-left: 1px solid rgba(0,0,0,0.6);
+		border-right: 1px solid rgba(0,0,0,0.6);
+		overflow: hidden;
+	}
+	.linr-center {
+		width: 100%;
+		height: 0;
+		position: absolute;
+		top: 50%;
+	}
+	.type-box {
+		display: block;
+		width: 50%;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		@include transform(translate(-50%, -50%));
+		background: none;
+		outline: 0;
+		border: 0;
+		border-bottom: 1px solid rgba(0,0,0,0.5);
+		color: black;
+		font-size: 20pt;
+		font-family: 'Bree Serif', helvetica, serif;
+		@include placeholder{
+			color: rgba(0,0,0,0.25);
+		}
+	}
+	.typed {
+		width: 100%;
+		position: absolute;
+		bottom: 60px;
+		font-size: 20pt;
+		border-bottom: 1px solid rgba(0,0,0,0.6);
+		padding: 20px 0;
+		color: rgba(0,0,0,0.6);
+		li {
+			padding-left: 25%;
+		}
+	}
+	.suggest {
+		width: 100%;
+		position: absolute;
+		top: 25px;
+		font-size: 20pt;
+		li {
+			margin-left: 25%;
+			position: relative;
+		}
+		p {
+			display: inline-block;
+		}
+		.before {
+			color: rgba(0,0,0,0.4);
+			position: absolute;
+			left: 0;
+			@include transform(translate(-100%, 0%));
+		}
+		.after {
+			color: rgba(0,0,0,0.4);
+		}
+	}
+}

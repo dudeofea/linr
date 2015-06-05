@@ -1,1 +1,133 @@
-/* CSS declarations go here */
+/* Eric Meyer's Reset CSS v2.0 - http://cssreset.com */
+@import url(http://fonts.googleapis.com/css?family=Bree+Serif);
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  margin: 0;
+  padding: 0; }
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after, q:before, q:after {
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: none;
+  font-family: 'Bree Serif', helvetica, serif; }
+
+h1 {
+  font-size: 200%;
+  color: #000;
+  padding: 1em; }
+
+h2 {
+  color: #495659; }
+
+.main-page {
+  background: -webkit-linear-gradient(0deg, #eed8b5 0%, #efaa85 50%);
+  /* Chrome 10+, Saf5.1+ */
+  background: -moz-linear-gradient(0deg, #eed8b5 0%, #efaa85 50%);
+  /* FF3.6+ */
+  background: -ms-linear-gradient(0deg, #eed8b5 0%, #efaa85 50%);
+  /* IE10 */
+  background: -o-linear-gradient(0deg, #eed8b5 0%, #efaa85 50%);
+  /* Opera 11.10+ */
+  background: linear-gradient(0deg, #eed8b5 0%, #efaa85 50%);
+  /* W3C */ }
+  .main-page .linr-feed {
+    width: 70%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    -webkit-transform: translate(-50%, 0%);
+    -moz-transform: translate(-50%, 0%);
+    -ms-transform: translate(-50%, 0%);
+    -o-transform: translate(-50%, 0%);
+    transform: translate(-50%, 0%);
+    background-color: rgba(255, 255, 255, 0.15);
+    border-left: 1px solid rgba(0, 0, 0, 0.6);
+    border-right: 1px solid rgba(0, 0, 0, 0.6);
+    overflow: hidden; }
+  .main-page .linr-center {
+    width: 100%;
+    height: 0;
+    position: absolute;
+    top: 50%; }
+  .main-page .type-box {
+    display: block;
+    width: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    background: none;
+    outline: 0;
+    border: 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+    color: black;
+    font-size: 20pt;
+    font-family: 'Bree Serif', helvetica, serif; }
+    .main-page .type-box::-webkit-input-placeholder {
+      color: rgba(0, 0, 0, 0.25); }
+    .main-page .type-box:-moz-placeholder {
+      color: rgba(0, 0, 0, 0.25); }
+    .main-page .type-box::-moz-placeholder {
+      color: rgba(0, 0, 0, 0.25); }
+    .main-page .type-box:-ms-input-placeholder {
+      color: rgba(0, 0, 0, 0.25); }
+  .main-page .typed {
+    width: 100%;
+    position: absolute;
+    bottom: 60px;
+    font-size: 20pt;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.6);
+    padding: 20px 0;
+    color: rgba(0, 0, 0, 0.6); }
+    .main-page .typed li {
+      padding-left: 25%; }
+  .main-page .suggest {
+    width: 100%;
+    position: absolute;
+    top: 25px;
+    font-size: 20pt; }
+    .main-page .suggest li {
+      margin-left: 25%;
+      position: relative; }
+    .main-page .suggest p {
+      display: inline-block; }
+    .main-page .suggest .before {
+      color: rgba(0, 0, 0, 0.4);
+      position: absolute;
+      left: 0;
+      -webkit-transform: translate(-100%, 0%);
+      -moz-transform: translate(-100%, 0%);
+      -ms-transform: translate(-100%, 0%);
+      -o-transform: translate(-100%, 0%);
+      transform: translate(-100%, 0%); }
+    .main-page .suggest .after {
+      color: rgba(0, 0, 0, 0.4); }
+
+/*# sourceMappingURL=linr.css.map */

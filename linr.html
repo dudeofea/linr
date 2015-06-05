@@ -1,14 +1,26 @@
 <head>
-  <title>linr</title>
+	<title>linr</title>
 </head>
 
-<body>
-  <h1>Welcome to Meteor!</h1>
-
-  {{> hello}}
+<body class="main-page">
+	<h1>linr</h1>
+	{{> typer}}
 </body>
 
-<template name="hello">
-  <button>Click Me</button>
-  <p>You've pressed the button {{counter}} times.</p>
+<template name="typer">
+	<div class="linr-feed">
+		<div class="linr-center">
+			<ul class="typed" id="typed">
+				<li>some phrase</li>
+				<li>some other phrase</li>
+				<li>something else entirely</li>
+			</ul>
+			<input type="text" class="type-box" id="type-box" placeholder="start typing..."/>
+			<ul class="suggest" id="suggest">
+				<li>some phrase</li>
+				<li>some other phrase</li>
+				<li>something else entirely</li>
+			</ul>
+		</div>
+	</div>
 </template>
