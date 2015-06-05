@@ -114,6 +114,7 @@ h2 {
 		color: rgba(0,0,0,0.6);
 		li {
 			padding-left: 25%;
+			white-space: nowrap;
 		}
 	}
 	.suggest {
@@ -124,6 +125,7 @@ h2 {
 		li {
 			margin-left: 25%;
 			position: relative;
+			white-space: nowrap;
 		}
 		p {
 			display: inline-block;

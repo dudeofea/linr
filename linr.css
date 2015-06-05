@@ -107,7 +107,8 @@ h2 {
     padding: 20px 0;
     color: rgba(0, 0, 0, 0.6); }
     .main-page .typed li {
-      padding-left: 25%; }
+      padding-left: 25%;
+      white-space: nowrap; }
   .main-page .suggest {
     width: 100%;
     position: absolute;
@@ -115,7 +116,8 @@ h2 {
     font-size: 20pt; }
     .main-page .suggest li {
       margin-left: 25%;
-      position: relative; }
+      position: relative;
+      white-space: nowrap; }
     .main-page .suggest p {
       display: inline-block; }
     .main-page .suggest .before {
