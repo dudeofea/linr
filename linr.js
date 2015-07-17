@@ -1,5 +1,8 @@
+//object containing all lines typed by users
+AllLines = new Mongo.Collection('lines');
+
 if (Meteor.isClient) {
-	sug = [
+	/*sug = [
 		"I'm Jack's Medulla Oblongata",
 		"I'm Jack's Colon",
 		"I'm Jack's Raging Bile Duct",
@@ -38,11 +41,20 @@ if (Meteor.isClient) {
 		"The Dude abides",
 		"Shut the fuck up, Donny",
 		"That rug really tied the room together"
-	];
+	];*/
+	sug = [];
 	// counter starts at 0
 	Session.setDefault('counter', 0);
 
 	var refreshList = function(val, target){
+		//query db for matching lines
+		var q = AllLines.find({line: {$regex: val}}).fetch();
+		sug = [];
+		for (var i = 0; i < q.length; i++) {
+			if(sug.indexOf(q[i].line) < 0){
+				sug.push(q[i].line);
+			}
+		};
 		val = val.toLowerCase();
 		var elem = document.getElementById('suggest');
 		elem.innerHTML = '';
@@ -54,7 +66,7 @@ if (Meteor.isClient) {
 		for (var i = 0; i < sug.length; i++) {
 			ind = sug[i].toLowerCase().indexOf(val);
 			if(ind >= 0){
-				console.log('ind: ', ind);
+				//console.log('ind: ', ind);
 				html += '<li>';
 				html += '<p class="before">'+sug[i].substr(0, ind).replace(/ /g, '&nbsp;')+'</p>';
 				html += '<p class="main">'+sug[i].substr(ind, val.length).replace(/ /g, '&nbsp;')+'</p>';
@@ -86,6 +98,12 @@ if (Meteor.isClient) {
 				//submit
 				document.getElementById('typed').innerHTML += '<li>'+val+'</li>';
 				e.target.value = "";
+				//add to global database
+				AllLines.insert({
+					createdBy: Meteor.userId,
+					createdAt: new Date(),
+					line: val
+				});
 			}else{
 				refreshList(val);
 			}
@@ -94,7 +112,7 @@ if (Meteor.isClient) {
 }
 
 if (Meteor.isServer) {
-	Meteor.startup(function () {
-		// code to run on server at startup
+	Meteor.startup(function(){
+		//code to run on startup
 	});
 }
