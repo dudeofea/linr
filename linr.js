@@ -99,6 +99,7 @@ if (Meteor.isClient) {
 				//submit
 				document.getElementById('typed').innerHTML += '<li>'+val+'</li>';
 				e.target.value = "";
+				refreshList("");
 				//add to global database
 				AllLines.insert({
 					createdBy: Meteor.userId,
