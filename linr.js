@@ -48,7 +48,8 @@ if (Meteor.isClient) {
 
 	var refreshList = function(val, target){
 		//query db for matching lines
-		var q = AllLines.find({line: {$regex: val}}).fetch();
+		var reg = new RegExp(val, "i");
+		var q = AllLines.find({line: {$regex: reg}}).fetch();
 		sug = [];
 		for (var i = 0; i < q.length; i++) {
 			if(sug.indexOf(q[i].line) < 0){
