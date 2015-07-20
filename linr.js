@@ -43,6 +43,9 @@ if (Meteor.isClient) {
 		"That rug really tied the room together"
 	];*/
 	sug = [];
+	sug_i = -1;
+	cur_line = "";	//current line
+	org_val = "";
 	// counter starts at 0
 	Session.setDefault('counter', 0);
 
@@ -57,6 +60,12 @@ if (Meteor.isClient) {
 			}
 		};
 		val = val.toLowerCase();
+		cur_line = val;
+		printList(val);
+	}
+
+	var printList = function(val){
+		//print off list
 		var elem = document.getElementById('suggest');
 		elem.innerHTML = '';
 		if(val == ''){
@@ -64,7 +73,7 @@ if (Meteor.isClient) {
 		}
 		var html = '';
 		var ind;
-		for (var i = 0; i < sug.length; i++) {
+		for (var i = sug_i+1; i < sug.length; i++) {
 			ind = sug[i].toLowerCase().indexOf(val);
 			if(ind >= 0){
 				//console.log('ind: ', ind);
@@ -79,13 +88,47 @@ if (Meteor.isClient) {
 	}
 
 	window.addEventListener('keydown', function(e){
-		if(e.which == 8 && e.target.className == "type-box"){	//8 is backspace
-			var str = String(e.target.value);
-			refreshList(str.substr(0, str.length-1));
+		if(e.target.className == "type-box-input"){	//if within our box
+			if(e.which == 8){					//backspace
+				var str = String(e.target.value);
+				refreshList(str.substr(0, str.length-1));
+			}else if(e.which == 38){			//up arrow, prev suggestion
+				sug_i--;
+			}else if(e.which == 39){			//right arrow, autocomplete		
+
+			}else if(e.which == 40){			//down arrow, next choice
+				sug_i++;
+			}
+			if(cur_line == ""){
+				sug_i = -1;
+				return;
+			}
+			if(sug_i >= sug.length){
+				sug_i = sug.length - 1;
+			}
+			if(sug_i < 0){
+				sug_i = -1;
+				var input = document.getElementById('type-box-input');
+				if(org_val != ""){
+					document.getElementById('type-box-before').innerHTML = '';
+					input.value = org_val;
+					printList(org_val);
+					org_val = "";
+				}
+				return;
+			}
+			if(org_val == ""){
+				org_val = cur_line;
+			}
+			//fill in box
+			ind = sug[sug_i].toLowerCase().indexOf(cur_line);
+			document.getElementById('type-box-before').innerHTML = sug[sug_i].substr(0, ind).replace(/ /g, '&nbsp;');
+			document.getElementById('type-box-input').value = sug[sug_i].substr(ind);
+			printList(cur_line);
 		}
 	}, true);
 	Template.typer.events({
-		'keypress .type-box': function (e) {
+		'keypress .type-box-input': function (e) {
 			var keynum;
 			if(window.event){	//IE
 				keynum = e.keyCode;
