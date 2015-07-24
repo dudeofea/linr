@@ -123,7 +123,11 @@ if (Meteor.isClient) {
 			//fill in box
 			ind = sug[sug_i].toLowerCase().indexOf(cur_line);
 			document.getElementById('type-box-before').innerHTML = sug[sug_i].substr(0, ind).replace(/ /g, '&nbsp;');
-			document.getElementById('type-box-input').value = sug[sug_i].substr(ind);
+			document.getElementById('type-box-main').innerHTML = sug[sug_i].substr(ind, cur_line.length).replace(/ /g, '&nbsp;');
+			var w = document.getElementById('type-box-main').offsetWidth;
+			document.getElementById('type-box-after').innerHTML = sug[sug_i].substr(ind+cur_line.length).replace(/ /g, '&nbsp;');
+			document.getElementById('type-box-after').style.left = w+"px";
+			//document.getElementById('type-box-input').value = sug[sug_i].substr(ind);
 			printList(cur_line);
 		}
 	}, true);
