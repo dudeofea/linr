@@ -95,8 +95,16 @@ if (Meteor.isClient) {
 				refreshList(str.substr(0, str.length-1));
 			}else if(e.which == 38){			//up arrow, prev suggestion
 				sug_i--;
-			}else if(e.which == 39){			//right arrow, autocomplete		
-
+			}else if(e.which == 39){			//right arrow, autocomplete
+				if(sug_i >= 0){		
+					document.getElementById('type-box-input').value = sug[sug_i];
+					document.getElementById('type-box-before').innerHTML = '';
+					document.getElementById('type-box-main').innerHTML = '';
+					document.getElementById('type-box-after').innerHTML = '';
+					printList('');
+					sug_i = -1;
+				}
+				return;
 			}else if(e.which == 40){			//down arrow, next choice
 				sug_i++;
 			}else{
