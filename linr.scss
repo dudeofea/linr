@@ -110,6 +110,7 @@ h2 {
 			}
 		}
 		.before, .after, .main {
+			pointer-events: none;
 			color: rgba(0,0,0,0.4);
 			display: block;
 			font-size: 20pt;

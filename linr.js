@@ -90,6 +90,7 @@ if (Meteor.isClient) {
 	window.addEventListener('keydown', function(e){
 		if(e.target.className == "type-box-input"){	//if within our box
 			if(e.which == 8){					//backspace
+				console.log(this);
 				var str = String(e.target.value);
 				refreshList(str.substr(0, str.length-1));
 			}else if(e.which == 38){			//up arrow, prev suggestion
@@ -98,27 +99,25 @@ if (Meteor.isClient) {
 
 			}else if(e.which == 40){			//down arrow, next choice
 				sug_i++;
+			}else{
+				return;
+			}
+			if(e.which != 8){
+				e.preventDefault();
 			}
 			if(cur_line == ""){
 				sug_i = -1;
-				return;
 			}
 			if(sug_i >= sug.length){
 				sug_i = sug.length - 1;
 			}
 			if(sug_i < 0){
 				sug_i = -1;
-				var input = document.getElementById('type-box-input');
-				if(org_val != ""){
-					document.getElementById('type-box-before').innerHTML = '';
-					input.value = org_val;
-					printList(org_val);
-					org_val = "";
-				}
+				document.getElementById('type-box-before').innerHTML = '';
+				document.getElementById('type-box-main').innerHTML = '';
+				document.getElementById('type-box-after').innerHTML = '';
+				printList(cur_line);
 				return;
-			}
-			if(org_val == ""){
-				org_val = cur_line;
 			}
 			//fill in box
 			ind = sug[sug_i].toLowerCase().indexOf(cur_line);
@@ -127,7 +126,7 @@ if (Meteor.isClient) {
 			var w = document.getElementById('type-box-main').offsetWidth;
 			document.getElementById('type-box-after').innerHTML = sug[sug_i].substr(ind+cur_line.length).replace(/ /g, '&nbsp;');
 			document.getElementById('type-box-after').style.left = w+"px";
-			//document.getElementById('type-box-input').value = sug[sug_i].substr(ind);
+			document.getElementById('type-box-input').value = cur_line;
 			printList(cur_line);
 		}
 	}, true);
